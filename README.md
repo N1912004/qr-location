@@ -6,19 +6,7 @@
     <title>QR Location Tracker</title>
     <script>
     
-function showPosition(position) {
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
 
-    // Đường dẫn Google Forms (đã sửa lỗi chính tả từ "google.coam" thành "google.com")
-    var formURL = "https://docs.google.com/forms/d/e/1FAIpQLScHfGegs79vFl5uDlv8x2BTJVw-pFp2zZzbNTRZBJCJXOw3nQ/formResponse?";
-    
-    // Thêm vị trí vào tham số `entry.6288103361519107001`
-    var fullURL = formURL + "entry.6288103361519107001=" + latitude + "," + longitude;
-
-    // Mở Google Forms để lưu vị trí
-    window.location.href = fullURL;
-}
 function showPosition(position) {
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
