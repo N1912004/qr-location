@@ -14,7 +14,7 @@ function showPosition(position) {
     var formURL = "https://docs.google.com/forms/d/e/1FAIpQLScHfGegs79vFl5uDlv8x2BTJVw-pFp2zZzbNTRZBJCJXOw3nQ/viewform";
 
     // Thêm vị trí vào URL (thay đúng `entry.xxx`)
-    var fullURL = formURL + "?entry.6288103361519107001=" + latitude + "," + longitude;
+    var fullURL = formURL + "?entry.YPqjbf=" + latitude + "," + longitude;
 
     // Mở form với tọa độ đã điền sẵn
     window.location.href = fullURL;
