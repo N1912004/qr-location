@@ -5,38 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yêu cầu vị trí</title>
     <script>
-        function requestLocationAndSubmit() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    showPosition,
-                    showError,
-                    { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
-                );
-            } else {
-                alert("Trình duyệt không hỗ trợ định vị!");
-            }
-        }
+    var entryID = "1233543830"; // Thay bằng entry ID thật của bạn
+    function showPosition(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
 
-        function showPosition(position) {
-            var latitude = position.coords.latitude;
-            var longitude = position.coords.longitude;
+    // URL Google Forms
+    var formURL = "https://docs.google.com/forms/d/e/1FAIpQLScHfGegs79vFl5uDlv8x2BTJVw-pFp2zZzbNTRZBJCJXOw3nQ/formResponse";
 
-            // Đường dẫn Google Forms (thay đúng ID của form bạn)
-            var formURL = "https://docs.google.com/forms/d/e/1FAIpQLScHfGegs79vFl5uDlv8x2BTJVw-pFp2zZzbNTRZBJCJXOw3nQ/formResponse";
+    // Tạo URL gửi dữ liệu
+    var fullURL = formURL + "?entry." + entryID + "=" + latitude + "," + longitude;
 
-            // Thêm dữ liệu vị trí vào URL
-            var fullURL = formURL + "?entry.1233543830=" + encodeURIComponent(latitude + "," + longitude);
-
-            // Gửi dữ liệu lên Google Forms
-            fetch(fullURL, { method: "POST", mode: "no-cors" })
-                .then(() => {
-                    alert("Vị trí đã được lưu! Đang mở Google Forms...");
-                    window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLScHfGegs79vFl5uDlv8x2BTJVw-pFp2zZzbNTRZBJCJXOw3nQ/viewform";
-                })
-                .catch((error) => {
-                    alert("Lỗi khi gửi dữ liệu: " + error);
-                });
-        }
+    // Gửi dữ liệu tự động
+    fetch(fullURL, { method: "POST", mode: "no-cors" })
+        .then(() => {
+            alert("Vị trí đã lưu! Mở form để kiểm tra.");
+            window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLScHfGegs79vFl5uDlv8x2BTJVw-pFp2zZzbNTRZBJCJXOw3nQ/viewform";
+        })
+        .catch((error) => {
+            alert("Lỗi gửi dữ liệu: " + error);
+        });
+}
 
         function showError(error) {
             switch (error.code) {
