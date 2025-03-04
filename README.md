@@ -1,3 +1,15 @@
+function requestLocationAndSubmit() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            showPosition,
+            showError,
+            { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+        );
+    } else {
+        alert("Trình duyệt không hỗ trợ định vị!");
+    }
+}
+
 function showPosition(position) {
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
@@ -19,9 +31,22 @@ function showPosition(position) {
         });
 }
 
-// Kiểm tra trình duyệt có hỗ trợ GPS không
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-} else {
-    alert("Trình duyệt không hỗ trợ định vị!");
+function showError(error) {
+    switch (error.code) {
+        case error.PERMISSION_DENIED:
+            alert("Người dùng từ chối cấp quyền vị trí!");
+            break;
+        case error.POSITION_UNAVAILABLE:
+            alert("Thông tin vị trí không khả dụng!");
+            break;
+        case error.TIMEOUT:
+            alert("Hết thời gian yêu cầu vị trí!");
+            break;
+        case error.UNKNOWN_ERROR:
+            alert("Lỗi không xác định!");
+            break;
+    }
 }
+
+// Gọi hàm khi quét QR
+requestLocationAndSubmit();
