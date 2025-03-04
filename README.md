@@ -14,11 +14,11 @@ function showPosition(position) {
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
 
-    // URL Google Forms (chỉnh sửa đúng link của bạn)
+    // Đường dẫn đúng của Google Forms để gửi dữ liệu
     var formURL = "https://docs.google.com/forms/d/e/1FAIpQLScHfGegs79vFl5uDlv8x2BTJVw-pFp2zZzbNTRZBJCJXOw3nQ/formResponse";
 
-    // Dữ liệu gửi lên Google Forms (thay đúng `entry.xxx`)
-    var fullURL = formURL + "?entry.6288103361519107001=" + latitude + "," + longitude;
+    // Thêm dữ liệu vị trí vào URL (thay đúng `entry.xxx` với ID của trường Địa Chỉ)
+    var fullURL = formURL + "?entry.6288103361519107001=" + encodeURIComponent(latitude + "," + longitude);
 
     // Gửi dữ liệu lên Google Forms
     fetch(fullURL, { method: "POST", mode: "no-cors" })
