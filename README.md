@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yêu cầu vị trí</title>
     <script>
-        var entryID = "1233543830"; // Thay bằng entry ID thật của bạn
+        var entryID = "1741078767321"; // Thay bằng entry ID thật của bạn
 
         function requestLocationAndSubmit() {
             if (confirm("Bạn có muốn chia sẻ vị trí của mình không?")) {
