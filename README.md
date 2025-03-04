@@ -25,7 +25,7 @@
             var formURL = "https://docs.google.com/forms/d/e/1FAIpQLScHfGegs79vFl5uDlv8x2BTJVw-pFp2zZzbNTRZBJCJXOw3nQ/formResponse";
 
             // Thêm dữ liệu vị trí vào URL
-            var fullURL = formURL + "?entry.6288103361519107001=" + encodeURIComponent(latitude + "," + longitude);
+            var fullURL = formURL + "?entry.1233543830=" + encodeURIComponent(latitude + "," + longitude);
 
             // Gửi dữ liệu lên Google Forms
             fetch(fullURL, { method: "POST", mode: "no-cors" })
